@@ -80,7 +80,6 @@ class _HomePageState extends State<HomePage>
               child: buildFootballNews(),
             ),
           ),
-          const SizedBox(height: 35),
         ],
       ),
     );
@@ -88,20 +87,20 @@ class _HomePageState extends State<HomePage>
 
   Widget buildCustomAppBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: Image.asset('assets/ic/category.png'),
             onPressed: () {},
+            icon: Image.asset('assets/ic/category.png'),
           ),
           Image.asset('assets/logo.png'),
           Stack(
             children: [
               IconButton(
-                icon: Image.asset('assets/ic/notification.png'),
                 onPressed: () {},
+                icon: Image.asset('assets/ic/notification.png'),
               ),
               Positioned(
                 top: 12,
@@ -120,7 +119,7 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
             ],
-          ),
+          )
         ],
       ),
     );
@@ -128,117 +127,109 @@ class _HomePageState extends State<HomePage>
 
   Widget buildCardBannerScores(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16),
+      padding: const EdgeInsets.only(left: 15),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: listMatches
               .asMap()
-              .map(
-                (index, match) {
-                  // Jika item kedua, gunakan secondaryColor, jika tidak gunakan gradien
-                  return MapEntry(
-                    index,
-                    Container(
-                      padding: const EdgeInsets.all(15),
-                      margin: const EdgeInsets.only(right: 15),
-                      width: MediaQuery.of(context).size.width / 1.5,
-                      decoration: BoxDecoration(
-                        color: index == 1 ? secondaryColor : backgroundColor,
-                        gradient: index != 1
-                            ? const LinearGradient(
-                                colors: [
-                                  Color(0XFF4568DC),
-                                  Color(0XFFB06AB3),
-                                ],
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                stops: [0.2, 1],
-                              )
-                            : null,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: [
-                          Text(
-                            '${match.ballPositionTeam1} : ${match.ballPositionTeam2}',
-                            style: whiteTextStyle.copyWith(
-                              fontSize: 10,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          const SizedBox(height: 15),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    match.flag1,
-                                    height: 50,
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                '${match.team1Score} - ${match.team2Score}',
-                                style: whiteTextStyle.copyWith(
-                                  fontSize: 24,
-                                  fontWeight: bold,
-                                ),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    match.flag2,
-                                    height: 50,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 5),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: match.team1Goals!
-                                    .map(
-                                      (goal) => Text(
-                                        goal,
-                                        style: whiteTextStyle.copyWith(
-                                          fontSize: 10,
-                                          fontWeight: medium,
-                                        ),
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: match.team2Goals!
-                                    .map(
-                                      (goal) => Text(
-                                        goal,
-                                        style: whiteTextStyle.copyWith(
-                                          fontSize: 10,
-                                          fontWeight: medium,
-                                        ),
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+              .map((index, match) {
+                return MapEntry(
+                  index,
+                  Container(
+                    padding: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.only(right: 15),
+                    width: MediaQuery.of(context).size.width / 1.5,
+                    decoration: BoxDecoration(
+                      color: index == 1 ? secondaryColor : backgroundColor,
+                      gradient: index != 1
+                          ? const LinearGradient(
+                              colors: [
+                                Color(0XFF4568DC),
+                                Color(0XFFB06AB3),
+                              ],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              stops: [0.2, 1],
+                            )
+                          : null,
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                  );
-                },
-              )
+                    child: Column(
+                      children: [
+                        Text(
+                          '${match.ballPositionTeam1} : ${match.ballPositionTeam2}',
+                          style: whiteTextStyle.copyWith(
+                            fontSize: 10,
+                            fontWeight: medium,
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: [
+                                Image.asset(
+                                  match.flag1,
+                                  height: 50,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              '${match.team1Score} - ${match.team2Score}',
+                              style: whiteTextStyle.copyWith(
+                                fontSize: 24,
+                                fontWeight: bold,
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Image.asset(
+                                  match.flag2,
+                                  height: 50,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: match.team1Goals!
+                                  .map(
+                                    (goal) => Text(
+                                      goal,
+                                      style: whiteTextStyle.copyWith(
+                                        fontSize: 10,
+                                        fontWeight: medium,
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                            Column(
+                              children: match.team2Goals!
+                                  .map(
+                                    (goal) => Text(
+                                      goal,
+                                      style: whiteTextStyle.copyWith(
+                                        fontSize: 10,
+                                        fontWeight: medium,
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              })
               .values
               .toList(),
         ),
@@ -318,23 +309,23 @@ class _HomePageState extends State<HomePage>
                   ),
                   Row(
                     children: [
-                      Image.asset(
-                        match.flag2,
-                        height: 35,
-                      ),
-                      const SizedBox(width: 5),
                       Text(
                         match.team2,
                         style: whiteTextStyle.copyWith(
                           fontWeight: medium,
                         ),
                       ),
+                      const SizedBox(width: 5),
+                      Image.asset(
+                        match.flag2,
+                        height: 35,
+                      ),
                     ],
                   ),
                 ],
               ),
             );
-          }),
+          })
         ],
       ),
     );
@@ -350,6 +341,7 @@ class _HomePageState extends State<HomePage>
               Text(
                 'Football News',
                 style: whiteTextStyle.copyWith(
+                  fontSize: 16,
                   fontWeight: medium,
                 ),
               ),
@@ -357,6 +349,7 @@ class _HomePageState extends State<HomePage>
               Text(
                 'See All',
                 style: thirdTextStyle.copyWith(
+                  fontSize: 16,
                   fontWeight: medium,
                 ),
               ),
@@ -385,7 +378,7 @@ class _HomePageState extends State<HomePage>
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 15),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -400,11 +393,10 @@ class _HomePageState extends State<HomePage>
                       ],
                     ),
                   ),
-                  const SizedBox(width: 10),
                 ],
               ),
             );
-          }),
+          })
         ],
       ),
     );
