@@ -49,7 +49,7 @@ List<ScheduleMatchModel> scheduleMatches = [
     team2: 'Crystal Pa',
     date: '29 Aug 2024',
     time: '03:00',
-    flag1: 'assets/flag/manc.png',
-    flag2: 'assets/flag/cpa.png',
+    flag1: 'assets/flag/mncty.png',
+    flag2: 'assets/flag/cscls.png',
   ),
 ];
