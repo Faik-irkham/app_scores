@@ -97,9 +97,29 @@ class _HomePageState extends State<HomePage>
             onPressed: () {},
           ),
           Image.asset('assets/logo.png'),
-          IconButton(
-            icon: Image.asset('assets/ic/notification.png'),
-            onPressed: () {},
+          Stack(
+            children: [
+              IconButton(
+                icon: Image.asset('assets/ic/notification.png'),
+                onPressed: () {},
+              ),
+              Positioned(
+                top: 12,
+                right: 16,
+                child: Container(
+                  height: 9,
+                  width: 9,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: backgroundColor,
+                      width: 1.2,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
